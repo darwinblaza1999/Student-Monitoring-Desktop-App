@@ -32,6 +32,14 @@ namespace SMS.Views.Accounts
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cbotype = new System.Windows.Forms.ComboBox();
+            this.cbouserId = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.uxoldpass = new System.Windows.Forms.TextBox();
+            this.btnsubmit = new System.Windows.Forms.Button();
+            this.btnreset = new System.Windows.Forms.Button();
             this.uxcpass = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.uxuname = new System.Windows.Forms.TextBox();
@@ -39,14 +47,6 @@ namespace SMS.Views.Accounts
             this.label6 = new System.Windows.Forms.Label();
             this.uxpassword = new System.Windows.Forms.TextBox();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.btnreset = new System.Windows.Forms.Button();
-            this.btnsubmit = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.cbotype = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.SuspendLayout();
@@ -74,9 +74,9 @@ namespace SMS.Views.Accounts
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.cbotype);
-            this.panel2.Controls.Add(this.comboBox1);
+            this.panel2.Controls.Add(this.cbouserId);
             this.panel2.Controls.Add(this.label5);
-            this.panel2.Controls.Add(this.textBox1);
+            this.panel2.Controls.Add(this.uxoldpass);
             this.panel2.Controls.Add(this.btnsubmit);
             this.panel2.Controls.Add(this.btnreset);
             this.panel2.Controls.Add(this.uxcpass);
@@ -89,6 +89,86 @@ namespace SMS.Views.Accounts
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(487, 287);
             this.panel2.TabIndex = 1;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(70, 27);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(54, 16);
+            this.label4.TabIndex = 27;
+            this.label4.Text = "User Id:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(70, 56);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(40, 16);
+            this.label3.TabIndex = 26;
+            this.label3.Text = "Type";
+            // 
+            // cbotype
+            // 
+            this.cbotype.Enabled = false;
+            this.cbotype.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbotype.FormattingEnabled = true;
+            this.cbotype.Location = new System.Drawing.Point(194, 56);
+            this.cbotype.Name = "cbotype";
+            this.cbotype.Size = new System.Drawing.Size(188, 24);
+            this.cbotype.TabIndex = 25;
+            // 
+            // cbouserId
+            // 
+            this.cbouserId.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbouserId.FormattingEnabled = true;
+            this.cbouserId.Location = new System.Drawing.Point(194, 24);
+            this.cbouserId.Name = "cbouserId";
+            this.cbouserId.Size = new System.Drawing.Size(188, 24);
+            this.cbouserId.TabIndex = 24;
+            this.cbouserId.SelectedIndexChanged += new System.EventHandler(this.cbouserId_SelectedIndexChanged);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(70, 120);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(92, 16);
+            this.label5.TabIndex = 22;
+            this.label5.Text = "Old Password";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
+            // 
+            // uxoldpass
+            // 
+            this.uxoldpass.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uxoldpass.Location = new System.Drawing.Point(194, 117);
+            this.uxoldpass.Name = "uxoldpass";
+            this.uxoldpass.PasswordChar = '*';
+            this.uxoldpass.Size = new System.Drawing.Size(186, 22);
+            this.uxoldpass.TabIndex = 23;
+            // 
+            // btnsubmit
+            // 
+            this.btnsubmit.Location = new System.Drawing.Point(179, 234);
+            this.btnsubmit.Name = "btnsubmit";
+            this.btnsubmit.Size = new System.Drawing.Size(79, 32);
+            this.btnsubmit.TabIndex = 19;
+            this.btnsubmit.Text = "Submit";
+            this.btnsubmit.UseVisualStyleBackColor = true;
+            this.btnsubmit.Click += new System.EventHandler(this.btnsubmit_Click);
+            // 
+            // btnreset
+            // 
+            this.btnreset.Location = new System.Drawing.Point(278, 234);
+            this.btnreset.Name = "btnreset";
+            this.btnreset.Size = new System.Drawing.Size(111, 32);
+            this.btnreset.TabIndex = 18;
+            this.btnreset.Text = "Reset Password";
+            this.btnreset.UseVisualStyleBackColor = true;
+            this.btnreset.Click += new System.EventHandler(this.btnreset_Click);
             // 
             // uxcpass
             // 
@@ -155,82 +235,6 @@ namespace SMS.Views.Accounts
             this.toolStrip1.TabIndex = 42;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // btnreset
-            // 
-            this.btnreset.Location = new System.Drawing.Point(278, 234);
-            this.btnreset.Name = "btnreset";
-            this.btnreset.Size = new System.Drawing.Size(111, 32);
-            this.btnreset.TabIndex = 18;
-            this.btnreset.Text = "Reset Password";
-            this.btnreset.UseVisualStyleBackColor = true;
-            // 
-            // btnsubmit
-            // 
-            this.btnsubmit.Location = new System.Drawing.Point(179, 234);
-            this.btnsubmit.Name = "btnsubmit";
-            this.btnsubmit.Size = new System.Drawing.Size(79, 32);
-            this.btnsubmit.TabIndex = 19;
-            this.btnsubmit.Text = "Submit";
-            this.btnsubmit.UseVisualStyleBackColor = true;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(70, 120);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(92, 16);
-            this.label5.TabIndex = 22;
-            this.label5.Text = "Old Password";
-            this.label5.Click += new System.EventHandler(this.label5_Click);
-            // 
-            // textBox1
-            // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(194, 117);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.PasswordChar = '*';
-            this.textBox1.Size = new System.Drawing.Size(186, 22);
-            this.textBox1.TabIndex = 23;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(194, 24);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(188, 24);
-            this.comboBox1.TabIndex = 24;
-            // 
-            // cbotype
-            // 
-            this.cbotype.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbotype.FormattingEnabled = true;
-            this.cbotype.Location = new System.Drawing.Point(194, 56);
-            this.cbotype.Name = "cbotype";
-            this.cbotype.Size = new System.Drawing.Size(188, 24);
-            this.cbotype.TabIndex = 25;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(70, 56);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(40, 16);
-            this.label3.TabIndex = 26;
-            this.label3.Text = "Type";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(70, 27);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(54, 16);
-            this.label4.TabIndex = 27;
-            this.label4.Text = "User Id:";
-            // 
             // frmSecurity
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -241,6 +245,7 @@ namespace SMS.Views.Accounts
             this.Controls.Add(this.panel1);
             this.Name = "frmSecurity";
             this.Text = "frmSecurity";
+            this.Load += new System.EventHandler(this.frmSecurity_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel2.ResumeLayout(false);
@@ -265,10 +270,10 @@ namespace SMS.Views.Accounts
         private System.Windows.Forms.Button btnreset;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox uxoldpass;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cbotype;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox cbouserId;
     }
 }

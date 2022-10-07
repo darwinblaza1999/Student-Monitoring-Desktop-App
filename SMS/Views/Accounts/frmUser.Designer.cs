@@ -44,16 +44,16 @@ namespace SMS.Views.Accounts
             this.lblfname = new System.Windows.Forms.Label();
             this.dgvRecord = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.uxconNo = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.uxemail = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.cboPos = new System.Windows.Forms.ComboBox();
+            this.rInActive = new System.Windows.Forms.RadioButton();
+            this.rActive = new System.Windows.Forms.RadioButton();
+            this.label8 = new System.Windows.Forms.Label();
             this.txtsearch = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.rActive = new System.Windows.Forms.RadioButton();
-            this.rInActive = new System.Windows.Forms.RadioButton();
-            this.cboPos = new System.Windows.Forms.ComboBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.uxemail = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.uxconNo = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRecord)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -103,8 +103,9 @@ namespace SMS.Views.Accounts
             this.btnedit.Name = "btnedit";
             this.btnedit.Size = new System.Drawing.Size(87, 37);
             this.btnedit.TabIndex = 39;
-            this.btnedit.Text = "EDIT";
+            this.btnedit.Text = "UPDATE";
             this.btnedit.UseVisualStyleBackColor = true;
+            this.btnedit.Click += new System.EventHandler(this.btnedit_Click);
             // 
             // toolStrip1
             // 
@@ -190,6 +191,7 @@ namespace SMS.Views.Accounts
             this.dgvRecord.RowHeadersVisible = false;
             this.dgvRecord.Size = new System.Drawing.Size(667, 320);
             this.dgvRecord.TabIndex = 44;
+            this.dgvRecord.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRecord_CellClick);
             // 
             // groupBox1
             // 
@@ -219,6 +221,84 @@ namespace SMS.Views.Accounts
             this.groupBox1.Text = "User Details";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
+            // uxconNo
+            // 
+            this.uxconNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uxconNo.Location = new System.Drawing.Point(119, 127);
+            this.uxconNo.Name = "uxconNo";
+            this.uxconNo.Size = new System.Drawing.Size(152, 22);
+            this.uxconNo.TabIndex = 19;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(19, 128);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(71, 16);
+            this.label11.TabIndex = 18;
+            this.label11.Text = "Phone No.";
+            // 
+            // uxemail
+            // 
+            this.uxemail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uxemail.Location = new System.Drawing.Point(119, 158);
+            this.uxemail.Name = "uxemail";
+            this.uxemail.Size = new System.Drawing.Size(152, 22);
+            this.uxemail.TabIndex = 17;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(17, 158);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(42, 16);
+            this.label9.TabIndex = 16;
+            this.label9.Text = "Email";
+            // 
+            // cboPos
+            // 
+            this.cboPos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboPos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboPos.FormattingEnabled = true;
+            this.cboPos.Location = new System.Drawing.Point(118, 192);
+            this.cboPos.Name = "cboPos";
+            this.cboPos.Size = new System.Drawing.Size(154, 24);
+            this.cboPos.TabIndex = 15;
+            // 
+            // rInActive
+            // 
+            this.rInActive.AutoSize = true;
+            this.rInActive.Location = new System.Drawing.Point(200, 227);
+            this.rInActive.Name = "rInActive";
+            this.rInActive.Size = new System.Drawing.Size(64, 17);
+            this.rInActive.TabIndex = 14;
+            this.rInActive.Text = "InActive";
+            this.rInActive.UseVisualStyleBackColor = true;
+            // 
+            // rActive
+            // 
+            this.rActive.AutoSize = true;
+            this.rActive.Checked = true;
+            this.rActive.Location = new System.Drawing.Point(124, 228);
+            this.rActive.Name = "rActive";
+            this.rActive.Size = new System.Drawing.Size(55, 17);
+            this.rActive.TabIndex = 13;
+            this.rActive.TabStop = true;
+            this.rActive.Text = "Active";
+            this.rActive.UseVisualStyleBackColor = true;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(20, 229);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(45, 16);
+            this.label8.TabIndex = 12;
+            this.label8.Text = "Status";
+            // 
             // txtsearch
             // 
             this.txtsearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -237,84 +317,6 @@ namespace SMS.Views.Accounts
             this.label7.Size = new System.Drawing.Size(44, 13);
             this.label7.TabIndex = 48;
             this.label7.Text = "Search:";
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(20, 229);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(45, 16);
-            this.label8.TabIndex = 12;
-            this.label8.Text = "Status";
-            // 
-            // rActive
-            // 
-            this.rActive.AutoSize = true;
-            this.rActive.Checked = true;
-            this.rActive.Location = new System.Drawing.Point(124, 228);
-            this.rActive.Name = "rActive";
-            this.rActive.Size = new System.Drawing.Size(55, 17);
-            this.rActive.TabIndex = 13;
-            this.rActive.TabStop = true;
-            this.rActive.Text = "Active";
-            this.rActive.UseVisualStyleBackColor = true;
-            // 
-            // rInActive
-            // 
-            this.rInActive.AutoSize = true;
-            this.rInActive.Location = new System.Drawing.Point(200, 227);
-            this.rInActive.Name = "rInActive";
-            this.rInActive.Size = new System.Drawing.Size(64, 17);
-            this.rInActive.TabIndex = 14;
-            this.rInActive.Text = "InActive";
-            this.rInActive.UseVisualStyleBackColor = true;
-            // 
-            // cboPos
-            // 
-            this.cboPos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboPos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cboPos.FormattingEnabled = true;
-            this.cboPos.Location = new System.Drawing.Point(118, 192);
-            this.cboPos.Name = "cboPos";
-            this.cboPos.Size = new System.Drawing.Size(154, 24);
-            this.cboPos.TabIndex = 15;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(17, 158);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(42, 16);
-            this.label9.TabIndex = 16;
-            this.label9.Text = "Email";
-            // 
-            // uxemail
-            // 
-            this.uxemail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxemail.Location = new System.Drawing.Point(119, 158);
-            this.uxemail.Name = "uxemail";
-            this.uxemail.Size = new System.Drawing.Size(152, 22);
-            this.uxemail.TabIndex = 17;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(19, 128);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(71, 16);
-            this.label11.TabIndex = 18;
-            this.label11.Text = "Phone No.";
-            // 
-            // uxconNo
-            // 
-            this.uxconNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxconNo.Location = new System.Drawing.Point(119, 127);
-            this.uxconNo.Name = "uxconNo";
-            this.uxconNo.Size = new System.Drawing.Size(152, 22);
-            this.uxconNo.TabIndex = 19;
             // 
             // frmUser
             // 

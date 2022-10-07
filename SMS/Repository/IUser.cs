@@ -15,5 +15,7 @@ namespace SMS.Repository
        Task<ServiceResponse<string>> GetPosition();
        Task<ServiceResponse<string>> GetUserId();
        Task<ServiceResponse<string>> GetUserByUserId(string userid);
+       Task<ServiceResponse<object>> UpdatePassword(UserDetail userdet);
+       Task<ServiceResponse<object>> UpdateStatus(UserDetail1 cred);
     }
 }

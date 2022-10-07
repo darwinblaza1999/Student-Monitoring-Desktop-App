@@ -118,13 +118,13 @@ namespace SMS.Class
             }
             return service;
         }
-        public async Task<ServiceResponse<object>> UpdatePassword(UserCred cred)
+        public async Task<ServiceResponse<object>> UpdatePassword(UserDetail cred)
         {
             var service = new ServiceResponse<object>();
             try
             {
                 var param = new DynamicParameters();
-                var property = GetType().GetProperties();
+                var property = cred.GetType().GetProperties();
                 param.Add("@retval", dbType: DbType.Int32, direction: ParameterDirection.Output);
                 foreach (var item in property)
                 {
@@ -196,7 +196,7 @@ namespace SMS.Class
                 if(result.Count() > 0)
                 {
                     service.Data = JsonConvert.SerializeObject(result.ToList());
-                    service.ResponseCode = 300;
+                    service.ResponseCode = 200;
                     service.ResponseMessage = "Record found";
                 }
                 else
@@ -210,6 +210,45 @@ namespace SMS.Class
             {
                 service.Data = null;
                 service.ResponseCode = 300;
+                service.ResponseMessage = ex.Message;
+            }
+            return service;
+        }
+        public async Task<ServiceResponse<object>> UpdateStatus(UserDetail1 user)
+        {
+            var service = new ServiceResponse<object>();
+            try
+            {
+                var param = new DynamicParameters();
+                var property = user.GetType().GetProperties();
+                param.Add("@retval", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                foreach (var item in property)
+                {
+                    var name = item.Name;
+                    var value = item.GetValue(user);
+                    param.Add(name, value);
+                }
+                var result = await con.QueryAsync("usp_UpdateUser", param, commandType: CommandType.StoredProcedure);
+                var ret = param.Get<int>("@retval");
+                if (ret > 0)
+                {
+                    service.Data = null;
+                    service.ResponseCode = 200;
+                    service.ResponseMessage = "Success";
+                }
+                else
+                {
+                    service.Data = null;
+                    service.ResponseCode = 300;
+                    service.ResponseMessage = "Failed";
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                service.Data = null;
+                service.ResponseCode = 500;
                 service.ResponseMessage = ex.Message;
             }
             return service;

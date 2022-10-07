@@ -55,7 +55,7 @@ namespace SMS.Views.Accounts
                 model.address = uxaddress.Text.Trim();
                 model.email = uxemail.Text.Trim();
                 model.ConNo = uxconNo.Text.Trim();
-                model.position = cboPos.GetItemText(cboPos.SelectedValue);
+                model.position = Convert.ToInt32(cboPos.GetItemText(cboPos.SelectedValue));
                 model.status = rActive.Checked == true ? 1 : 2;
 
                 if(uxfname.Text != "" || uxlname.Text != "" || uxaddress.Text != "" || uxemail.Text != "")
@@ -190,6 +190,77 @@ namespace SMS.Views.Accounts
 
             }
 
+        }
+
+        private void dgvRecord_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if(e.ColumnIndex == 0)
+                {
+                    if(dgvRecord.Rows.Count > 0)
+                    {
+                        var row = e.RowIndex;
+                        var rowdata = dgvRecord.Rows[row];
+                        var fname = rowdata.Cells["Name"].Value.ToString().Split(' ');
+                        uxfname.Text = fname[1];
+                        uxlname.Text = fname[0];
+                        uxaddress.Text = rowdata.Cells["Address"].Value.ToString();
+                        uxconNo.Text = rowdata.Cells["ConNo"].Value.ToString();
+                        uxemail.Text = rowdata.Cells["Email"].Value.ToString();
+                        var status = rowdata.Cells["Status"].Value.ToString();
+                        DataHolder.userid = rowdata.Cells["ID"].Value.ToString();
+                        if(status == "Active")
+                        {
+                            rActive.Checked = true;
+                        }
+                        else
+                        {
+                            rInActive.Checked = true;
+                        }
+                        var pos = rowdata.Cells["Position"].Value.ToString();
+                        cboPos.Text = pos;
+                    }
+
+                }
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message, "Exception error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private async void btnedit_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                var position = cboPos.GetItemText(cboPos.SelectedValue) != null? cboPos.GetItemText(cboPos.SelectedValue) : "0";
+                if(Convert.ToInt32(position) > 0)
+                {
+                    var udetails = new UserDetail1();
+                    udetails.status = rActive.Checked == true ? 1 : 2;
+                    udetails.position = Convert.ToInt32(cboPos.GetItemText(cboPos.SelectedValue));
+                    udetails.UDT = DateTime.Now;
+                    udetails.UserId = DataHolder.userid;
+
+                    var result = await user.UpdateStatus(udetails);
+                    if(result.ResponseCode == 200)
+                    {
+                        MessageBox.Show("Successfully updated!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Please select position!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+            }
         }
     }
 }

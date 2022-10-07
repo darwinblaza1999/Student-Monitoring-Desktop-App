@@ -10,5 +10,6 @@ namespace SMS.Models
     public class DataHolder
     {
         public static DataTable dtuser { get; set; }
+        public static string userid { get; set; }
     }
 }
