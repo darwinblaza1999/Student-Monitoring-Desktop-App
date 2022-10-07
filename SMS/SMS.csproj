@@ -215,6 +215,7 @@
     <Compile Include="Class\Adapter\AdapterClass.cs" />
     <Compile Include="Class\Connection.cs" />
     <Compile Include="Class\User.cs" />
+    <Compile Include="Models\DataHolder.cs" />
     <Compile Include="Models\ServiceResponse.cs" />
     <Compile Include="Models\UserModel.cs" />
     <Compile Include="Repository\IAdapter.cs" />
@@ -224,6 +225,12 @@
     </Compile>
     <Compile Include="Views\Accounts\frmLogin.Designer.cs">
       <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Accounts\frmSecurity.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Accounts\frmSecurity.Designer.cs">
+      <DependentUpon>frmSecurity.cs</DependentUpon>
     </Compile>
     <Compile Include="Views\Accounts\frmUser.cs">
       <SubType>Form</SubType>
@@ -241,6 +248,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Views\Accounts\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Accounts\frmSecurity.resx">
+      <DependentUpon>frmSecurity.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Accounts\frmUser.resx">
       <DependentUpon>frmUser.cs</DependentUpon>

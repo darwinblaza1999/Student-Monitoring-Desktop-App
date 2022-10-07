@@ -54,22 +54,37 @@ namespace SMS.Views.Accounts
                 model.lastname = uxlname.Text.Trim();
                 model.address = uxaddress.Text.Trim();
                 model.email = uxemail.Text.Trim();
+                model.ConNo = uxconNo.Text.Trim();
                 model.position = cboPos.GetItemText(cboPos.SelectedValue);
-                model.username = uxuname.Text.Trim();
-                model.password = uxpassword.Text.Trim();
                 model.status = rActive.Checked == true ? 1 : 2;
 
-                var data = await user.InsertUser(model);
-                if(data.ResponseCode == 200)
+                if(uxfname.Text != "" || uxlname.Text != "" || uxaddress.Text != "" || uxemail.Text != "")
                 {
-                    MessageBox.Show("Successfully Saved!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    Clear();
-                    frmUser_Load(sender, e);
+                    if(cboPos.SelectedIndex != 0)
+                    {
+                        var data = await user.InsertUser(model);
+                        if (data.ResponseCode == 200)
+                        {
+                            MessageBox.Show("Successfully Saved!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            Clear();
+                            frmUser_Load(sender, e);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Failed to insert, " + data.ResponseMessage, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please select position!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Failed to insert, " + data.ResponseMessage, "Success", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Please input the required fields!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
+                
+                
             }
             catch (Exception ex)
             {
@@ -83,8 +98,8 @@ namespace SMS.Views.Accounts
             uxlname.Text = "";
             uxaddress.Text = "";
             uxemail.Text = "";
-            uxuname.Text = "";
-            uxpassword.Text = "";
+            txtsearch.Text = "";
+            uxconNo.Text = "";
         }
 
         private async void frmUser_Load(object sender, EventArgs e)
@@ -95,9 +110,10 @@ namespace SMS.Views.Accounts
                 var data = await user.GetUser();
                 if (data.ResponseCode == 200)
                 {
-                    var dt = JsonConvert.DeserializeObject<DataTable>(data.Data);
+                    DataHolder.dtuser = new DataTable();
+                    DataHolder.dtuser = JsonConvert.DeserializeObject<DataTable>(data.Data);
                     dgvRecord.DataSource = null;
-                    dgvRecord.DataSource = dt;
+                    dgvRecord.DataSource = DataHolder.dtuser;
                 }
                 else
                 {
@@ -106,7 +122,7 @@ namespace SMS.Views.Accounts
                 #endregion
                 #region Get Position
                 var posdata = await user.GetPosition();
-                if(posdata.ResponseCode == 200)
+                if (posdata.ResponseCode == 200)
                 {
                     var dtpos = JsonConvert.DeserializeObject<DataTable>(posdata.Data);
 
@@ -130,10 +146,49 @@ namespace SMS.Views.Accounts
         private void btnrefresh_Click(object sender, EventArgs e)
         {
             frmUser_Load(sender, e);
+            Clear();
         }
 
         private void groupBox1_Enter(object sender, EventArgs e)
         {
+
+        }
+
+        private void txtsearch_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtsearch_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 13)
+            {
+                try
+                {
+
+                    if (DataHolder.dtuser.Columns.Count > 0)
+                    {
+                        DataView dv = new DataView();
+                        dv = DataHolder.dtuser.DefaultView;
+                        if (txtsearch.Text == "")
+                        {
+                            dgvRecord.DataSource = dv;
+                        }
+                        else
+                        {
+                            dv.RowFilter = "ID LIKE '" + txtsearch.Text.Trim() + "'";
+                            dgvRecord.DataSource = dv;
+                        }
+
+                    }
+                }
+                catch (Exception ex)
+                {
+
+                    MessageBox.Show(ex.Message, "Exception error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+
+            }
 
         }
     }

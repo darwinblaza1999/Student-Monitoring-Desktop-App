@@ -13,5 +13,7 @@ namespace SMS.Repository
        Task<ServiceResponse<object>> InsertUser(UserModel user);
        Task<ServiceResponse<string>> GetUser();
        Task<ServiceResponse<string>> GetPosition();
+       Task<ServiceResponse<string>> GetUserId();
+       Task<ServiceResponse<string>> GetUserByUserId(string userid);
     }
 }

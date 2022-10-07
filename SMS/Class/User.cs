@@ -118,5 +118,102 @@ namespace SMS.Class
             }
             return service;
         }
+        public async Task<ServiceResponse<object>> UpdatePassword(UserCred cred)
+        {
+            var service = new ServiceResponse<object>();
+            try
+            {
+                var param = new DynamicParameters();
+                var property = GetType().GetProperties();
+                param.Add("@retval", dbType: DbType.Int32, direction: ParameterDirection.Output);
+                foreach (var item in property)
+                {
+                    var name = item.Name;
+                    var value = item.GetValue(cred);
+                    param.Add(name, value);
+                }
+                var result = await con.QueryAsync("usp_Resetpassword", param, commandType: CommandType.StoredProcedure);
+                var ret = param.Get<int>("@retval");
+                if(ret > 0)
+                {
+                    service.Data = null;
+                    service.ResponseCode = 200;
+                    service.ResponseMessage = "Success";
+                }
+                else
+                {
+                    service.Data = null;
+                    service.ResponseCode = 300;
+                    service.ResponseMessage = "Failed";
+                }
+                
+            }
+            catch (Exception ex)
+            {
+
+                service.Data = null;
+                service.ResponseCode = 500;
+                service.ResponseMessage = ex.Message;
+            }
+            return service;
+        }
+        public async Task<ServiceResponse<string>> GetUserId()
+        {
+            var service = new ServiceResponse<string>();
+            try
+            {
+                var result = await con.QueryAsync("usp_GetUserId", commandType: CommandType.StoredProcedure);
+                if(result.Count() > 0)
+                {
+                    service.Data = JsonConvert.SerializeObject(result.ToList());
+                    service.ResponseCode = 200;
+                    service.ResponseMessage = "Record found";
+                }
+                else
+                {
+                    service.Data = null;
+                    service.ResponseCode = 300;
+                    service.ResponseMessage = "No record found";
+                }
+            }
+            catch (Exception ex)
+            {
+
+                service.Data = null;
+                service.ResponseCode = 500;
+                service.ResponseMessage = ex.Message;
+            }
+            return service;
+        }
+        public async Task<ServiceResponse<string>> GetUserByUserId(string userid)
+        {
+            var service = new ServiceResponse<string>();
+            try
+            {
+                var param = new DynamicParameters();
+                param.Add("@userId", userid);
+                var result = await con.QueryAsync("usp_GetUserById", param, commandType: CommandType.StoredProcedure);
+                if(result.Count() > 0)
+                {
+                    service.Data = JsonConvert.SerializeObject(result.ToList());
+                    service.ResponseCode = 300;
+                    service.ResponseMessage = "Record found";
+                }
+                else
+                {
+                    service.Data = null;
+                    service.ResponseCode = 300;
+                    service.ResponseMessage = "No record found";
+                }
+            }
+            catch (Exception ex)
+            {
+                service.Data = null;
+                service.ResponseCode = 300;
+                service.ResponseMessage = ex.Message;
+            }
+            return service;
+        }
     }
+
 }

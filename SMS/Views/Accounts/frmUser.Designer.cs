@@ -38,17 +38,12 @@ namespace SMS.Views.Accounts
             this.uxaddress = new System.Windows.Forms.TextBox();
             this.uxfname = new System.Windows.Forms.TextBox();
             this.uxlname = new System.Windows.Forms.TextBox();
-            this.uxpassword = new System.Windows.Forms.TextBox();
-            this.uxuname = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.lblfname = new System.Windows.Forms.Label();
             this.dgvRecord = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txtsearch = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -57,12 +52,11 @@ namespace SMS.Views.Accounts
             this.cboPos = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
             this.uxemail = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.uxconNo = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRecord)).BeginInit();
             this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -85,7 +79,7 @@ namespace SMS.Views.Accounts
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(192, 378);
+            this.btnSave.Location = new System.Drawing.Point(185, 276);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(87, 37);
             this.btnSave.TabIndex = 38;
@@ -95,7 +89,7 @@ namespace SMS.Views.Accounts
             // 
             // btnrefresh
             // 
-            this.btnrefresh.Location = new System.Drawing.Point(6, 378);
+            this.btnrefresh.Location = new System.Drawing.Point(-1, 276);
             this.btnrefresh.Name = "btnrefresh";
             this.btnrefresh.Size = new System.Drawing.Size(87, 37);
             this.btnrefresh.TabIndex = 41;
@@ -105,7 +99,7 @@ namespace SMS.Views.Accounts
             // 
             // btnedit
             // 
-            this.btnedit.Location = new System.Drawing.Point(99, 378);
+            this.btnedit.Location = new System.Drawing.Point(92, 276);
             this.btnedit.Name = "btnedit";
             this.btnedit.Size = new System.Drawing.Size(87, 37);
             this.btnedit.TabIndex = 39;
@@ -117,7 +111,7 @@ namespace SMS.Views.Accounts
             this.toolStrip1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.toolStrip1.Location = new System.Drawing.Point(0, 426);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(909, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(982, 25);
             this.toolStrip1.TabIndex = 41;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -145,33 +139,6 @@ namespace SMS.Views.Accounts
             this.uxlname.Size = new System.Drawing.Size(152, 22);
             this.uxlname.TabIndex = 8;
             // 
-            // uxpassword
-            // 
-            this.uxpassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxpassword.Location = new System.Drawing.Point(119, 53);
-            this.uxpassword.Name = "uxpassword";
-            this.uxpassword.PasswordChar = '*';
-            this.uxpassword.Size = new System.Drawing.Size(152, 22);
-            this.uxpassword.TabIndex = 7;
-            // 
-            // uxuname
-            // 
-            this.uxuname.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxuname.Location = new System.Drawing.Point(119, 16);
-            this.uxuname.Name = "uxuname";
-            this.uxuname.Size = new System.Drawing.Size(152, 22);
-            this.uxuname.TabIndex = 6;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(15, 57);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(68, 16);
-            this.label6.TabIndex = 5;
-            this.label6.Text = "Password";
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -197,22 +164,11 @@ namespace SMS.Views.Accounts
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(19, 157);
+            this.label3.Location = new System.Drawing.Point(19, 195);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(56, 16);
             this.label3.TabIndex = 2;
             this.label3.Text = "Position";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(15, 22);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(71, 16);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Username";
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // lblfname
             // 
@@ -226,20 +182,27 @@ namespace SMS.Views.Accounts
             // 
             // dgvRecord
             // 
+            this.dgvRecord.AllowUserToAddRows = false;
             this.dgvRecord.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvRecord.Location = new System.Drawing.Point(290, 90);
+            this.dgvRecord.Location = new System.Drawing.Point(303, 79);
             this.dgvRecord.Name = "dgvRecord";
             this.dgvRecord.ReadOnly = true;
-            this.dgvRecord.Size = new System.Drawing.Size(607, 306);
+            this.dgvRecord.RowHeadersVisible = false;
+            this.dgvRecord.Size = new System.Drawing.Size(667, 320);
             this.dgvRecord.TabIndex = 44;
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.uxconNo);
+            this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.uxemail);
+            this.groupBox1.Controls.Add(this.btnrefresh);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.cboPos);
             this.groupBox1.Controls.Add(this.rInActive);
+            this.groupBox1.Controls.Add(this.btnedit);
             this.groupBox1.Controls.Add(this.rActive);
+            this.groupBox1.Controls.Add(this.btnSave);
             this.groupBox1.Controls.Add(this.label8);
             this.groupBox1.Controls.Add(this.uxlname);
             this.groupBox1.Controls.Add(this.uxaddress);
@@ -248,41 +211,28 @@ namespace SMS.Views.Accounts
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.uxfname);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Location = new System.Drawing.Point(5, 43);
+            this.groupBox1.Location = new System.Drawing.Point(5, 54);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(279, 207);
+            this.groupBox1.Size = new System.Drawing.Size(292, 341);
             this.groupBox1.TabIndex = 45;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "User Details";
             this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.textBox1);
-            this.groupBox2.Controls.Add(this.label10);
-            this.groupBox2.Controls.Add(this.uxuname);
-            this.groupBox2.Controls.Add(this.label2);
-            this.groupBox2.Controls.Add(this.label6);
-            this.groupBox2.Controls.Add(this.uxpassword);
-            this.groupBox2.Location = new System.Drawing.Point(7, 256);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(277, 116);
-            this.groupBox2.TabIndex = 46;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "User Credentials";
-            // 
             // txtsearch
             // 
             this.txtsearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtsearch.Location = new System.Drawing.Point(669, 47);
+            this.txtsearch.Location = new System.Drawing.Point(747, 47);
             this.txtsearch.Name = "txtsearch";
             this.txtsearch.Size = new System.Drawing.Size(197, 26);
             this.txtsearch.TabIndex = 47;
+            this.txtsearch.TextChanged += new System.EventHandler(this.txtsearch_TextChanged);
+            this.txtsearch.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtsearch_KeyPress);
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(619, 55);
+            this.label7.Location = new System.Drawing.Point(697, 55);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(44, 13);
             this.label7.TabIndex = 48;
@@ -292,7 +242,7 @@ namespace SMS.Views.Accounts
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(20, 185);
+            this.label8.Location = new System.Drawing.Point(20, 229);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(45, 16);
             this.label8.TabIndex = 12;
@@ -302,7 +252,7 @@ namespace SMS.Views.Accounts
             // 
             this.rActive.AutoSize = true;
             this.rActive.Checked = true;
-            this.rActive.Location = new System.Drawing.Point(124, 184);
+            this.rActive.Location = new System.Drawing.Point(124, 228);
             this.rActive.Name = "rActive";
             this.rActive.Size = new System.Drawing.Size(55, 17);
             this.rActive.TabIndex = 13;
@@ -313,7 +263,7 @@ namespace SMS.Views.Accounts
             // rInActive
             // 
             this.rInActive.AutoSize = true;
-            this.rInActive.Location = new System.Drawing.Point(200, 183);
+            this.rInActive.Location = new System.Drawing.Point(200, 227);
             this.rInActive.Name = "rInActive";
             this.rInActive.Size = new System.Drawing.Size(64, 17);
             this.rInActive.TabIndex = 14;
@@ -323,17 +273,18 @@ namespace SMS.Views.Accounts
             // cboPos
             // 
             this.cboPos.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboPos.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboPos.FormattingEnabled = true;
-            this.cboPos.Location = new System.Drawing.Point(120, 156);
+            this.cboPos.Location = new System.Drawing.Point(118, 192);
             this.cboPos.Name = "cboPos";
-            this.cboPos.Size = new System.Drawing.Size(152, 21);
+            this.cboPos.Size = new System.Drawing.Size(154, 24);
             this.cboPos.TabIndex = 15;
             // 
             // label9
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(17, 125);
+            this.label9.Location = new System.Drawing.Point(17, 158);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(42, 16);
             this.label9.TabIndex = 16;
@@ -342,44 +293,39 @@ namespace SMS.Views.Accounts
             // uxemail
             // 
             this.uxemail.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.uxemail.Location = new System.Drawing.Point(119, 125);
+            this.uxemail.Location = new System.Drawing.Point(119, 158);
             this.uxemail.Name = "uxemail";
             this.uxemail.Size = new System.Drawing.Size(152, 22);
             this.uxemail.TabIndex = 17;
             // 
-            // label10
+            // label11
             // 
-            this.label10.AutoSize = true;
-            this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(15, 83);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(116, 16);
-            this.label10.TabIndex = 8;
-            this.label10.Text = "Confirm Password";
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(19, 128);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(71, 16);
+            this.label11.TabIndex = 18;
+            this.label11.Text = "Phone No.";
             // 
-            // textBox1
+            // uxconNo
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(137, 83);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.PasswordChar = '*';
-            this.textBox1.Size = new System.Drawing.Size(134, 22);
-            this.textBox1.TabIndex = 9;
+            this.uxconNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.uxconNo.Location = new System.Drawing.Point(119, 127);
+            this.uxconNo.Name = "uxconNo";
+            this.uxconNo.Size = new System.Drawing.Size(152, 22);
+            this.uxconNo.TabIndex = 19;
             // 
             // frmUser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(909, 451);
+            this.ClientSize = new System.Drawing.Size(982, 451);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.txtsearch);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.btnrefresh);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.dgvRecord);
-            this.Controls.Add(this.btnedit);
             this.Controls.Add(this.toolStrip1);
-            this.Controls.Add(this.btnSave);
             this.Controls.Add(this.panel1);
             this.Name = "frmUser";
             this.Text = "frmUser";
@@ -389,8 +335,6 @@ namespace SMS.Views.Accounts
             ((System.ComponentModel.ISupportInitialize)(this.dgvRecord)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -407,17 +351,12 @@ namespace SMS.Views.Accounts
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblfname;
         private System.Windows.Forms.TextBox uxaddress;
         private System.Windows.Forms.TextBox uxfname;
         private System.Windows.Forms.TextBox uxlname;
-        private System.Windows.Forms.TextBox uxpassword;
-        private System.Windows.Forms.TextBox uxuname;
-        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.DataGridView dgvRecord;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox txtsearch;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.RadioButton rInActive;
@@ -426,7 +365,7 @@ namespace SMS.Views.Accounts
         private System.Windows.Forms.ComboBox cboPos;
         private System.Windows.Forms.TextBox uxemail;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.TextBox uxconNo;
+        private System.Windows.Forms.Label label11;
     }
 }
