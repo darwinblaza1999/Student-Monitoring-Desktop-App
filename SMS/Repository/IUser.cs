@@ -1,0 +1,17 @@
+﻿using SMS.Models;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SMS.Repository
+{
+    public interface IUser
+    {
+       Task<ServiceResponse<object>> InsertUser(UserModel user);
+       Task<ServiceResponse<string>> GetUser();
+       Task<ServiceResponse<string>> GetPosition();
+    }
+}
