@@ -79,7 +79,7 @@ namespace SMS.Views.Accounts
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(185, 276);
+            this.btnSave.Location = new System.Drawing.Point(194, 276);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(87, 37);
             this.btnSave.TabIndex = 38;
@@ -89,7 +89,7 @@ namespace SMS.Views.Accounts
             // 
             // btnrefresh
             // 
-            this.btnrefresh.Location = new System.Drawing.Point(-1, 276);
+            this.btnrefresh.Location = new System.Drawing.Point(8, 276);
             this.btnrefresh.Name = "btnrefresh";
             this.btnrefresh.Size = new System.Drawing.Size(87, 37);
             this.btnrefresh.TabIndex = 41;
@@ -99,7 +99,7 @@ namespace SMS.Views.Accounts
             // 
             // btnedit
             // 
-            this.btnedit.Location = new System.Drawing.Point(92, 276);
+            this.btnedit.Location = new System.Drawing.Point(101, 276);
             this.btnedit.Name = "btnedit";
             this.btnedit.Size = new System.Drawing.Size(87, 37);
             this.btnedit.TabIndex = 39;

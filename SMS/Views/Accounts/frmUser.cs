@@ -170,15 +170,23 @@ namespace SMS.Views.Accounts
                     {
                         DataView dv = new DataView();
                         dv = DataHolder.dtuser.DefaultView;
-                        if (txtsearch.Text == "")
+                        if(dv.Count > 0)
                         {
-                            dgvRecord.DataSource = dv;
+                            if (txtsearch.Text == "")
+                            {
+                                dgvRecord.DataSource = dv;
+                            }
+                            else
+                            {
+                                dv.RowFilter = "ID LIKE '" + txtsearch.Text.Trim() + "'";
+                                dgvRecord.DataSource = dv;
+                            }
                         }
                         else
                         {
-                            dv.RowFilter = "ID LIKE '" + txtsearch.Text.Trim() + "'";
-                            dgvRecord.DataSource = dv;
+                            MessageBox.Show("No record found", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                         }
+                        
 
                     }
                 }
@@ -259,7 +267,7 @@ namespace SMS.Views.Accounts
             catch (Exception ex)
             {
 
-                throw;
+                MessageBox.Show(ex.Message, "Exception error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

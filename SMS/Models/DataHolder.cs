@@ -11,5 +11,6 @@ namespace SMS.Models
     {
         public static DataTable dtuser { get; set; }
         public static string userid { get; set; }
+        public static string button { get; set; }
     }
 }
