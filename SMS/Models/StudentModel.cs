@@ -14,17 +14,18 @@ namespace SMS.Models
         public string address { get; set; }
         public string conNo { get; set; }
         public string gender { get; set; }
-        public int type { get; set; }
+        public int typeId { get; set; }
 
     }
     public class StudentPartial
     {
-        public int gradelevel { get; set; }
+        public int gradeId { get; set; }
+        public int sectionId { get; set; }
     }
     public class PartialModel : StudentModel
     {
         public string studentId { get; set; }
-        public int status { get; set; }
+        public int statusId { get; set; }
     }
     public class ScoreModel
     {

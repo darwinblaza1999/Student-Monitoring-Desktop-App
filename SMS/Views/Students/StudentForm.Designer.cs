@@ -61,6 +61,8 @@ namespace SMS.Views.Students
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.cbosection = new System.Windows.Forms.ComboBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panel3.SuspendLayout();
@@ -91,7 +93,7 @@ namespace SMS.Views.Students
             this.panel2.Controls.Add(this.groupInfo);
             this.panel2.Location = new System.Drawing.Point(2, 44);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(418, 376);
+            this.panel2.Size = new System.Drawing.Size(418, 424);
             this.panel2.TabIndex = 1;
             // 
             // panel3
@@ -147,6 +149,8 @@ namespace SMS.Views.Students
             // 
             // groupInfo
             // 
+            this.groupInfo.Controls.Add(this.cbosection);
+            this.groupInfo.Controls.Add(this.label12);
             this.groupInfo.Controls.Add(this.rfemale);
             this.groupInfo.Controls.Add(this.rmale);
             this.groupInfo.Controls.Add(this.label11);
@@ -172,7 +176,7 @@ namespace SMS.Views.Students
             this.groupInfo.Enabled = false;
             this.groupInfo.Location = new System.Drawing.Point(3, 2);
             this.groupInfo.Name = "groupInfo";
-            this.groupInfo.Size = new System.Drawing.Size(308, 369);
+            this.groupInfo.Size = new System.Drawing.Size(308, 419);
             this.groupInfo.TabIndex = 14;
             this.groupInfo.TabStop = false;
             this.groupInfo.Text = "Student  Information";
@@ -181,7 +185,7 @@ namespace SMS.Views.Students
             // 
             this.rfemale.AutoSize = true;
             this.rfemale.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rfemale.Location = new System.Drawing.Point(157, 224);
+            this.rfemale.Location = new System.Drawing.Point(157, 264);
             this.rfemale.Name = "rfemale";
             this.rfemale.Size = new System.Drawing.Size(67, 19);
             this.rfemale.TabIndex = 22;
@@ -194,7 +198,7 @@ namespace SMS.Views.Students
             this.rmale.AutoSize = true;
             this.rmale.Checked = true;
             this.rmale.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rmale.Location = new System.Drawing.Point(86, 225);
+            this.rmale.Location = new System.Drawing.Point(86, 265);
             this.rmale.Name = "rmale";
             this.rmale.Size = new System.Drawing.Size(53, 19);
             this.rmale.TabIndex = 21;
@@ -206,7 +210,7 @@ namespace SMS.Views.Students
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(8, 219);
+            this.label11.Location = new System.Drawing.Point(8, 264);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(48, 15);
             this.label11.TabIndex = 20;
@@ -220,6 +224,7 @@ namespace SMS.Views.Students
             this.cbostudentId.Name = "cbostudentId";
             this.cbostudentId.Size = new System.Drawing.Size(206, 23);
             this.cbostudentId.TabIndex = 19;
+            this.cbostudentId.SelectedIndexChanged += new System.EventHandler(this.cbostudentId_SelectedIndexChanged);
             // 
             // label10
             // 
@@ -233,7 +238,7 @@ namespace SMS.Views.Students
             // 
             // btnsubmit
             // 
-            this.btnsubmit.Location = new System.Drawing.Point(222, 331);
+            this.btnsubmit.Location = new System.Drawing.Point(222, 371);
             this.btnsubmit.Name = "btnsubmit";
             this.btnsubmit.Size = new System.Drawing.Size(62, 32);
             this.btnsubmit.TabIndex = 17;
@@ -246,7 +251,7 @@ namespace SMS.Views.Students
             this.cbotype.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbotype.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbotype.FormattingEnabled = true;
-            this.cbotype.Location = new System.Drawing.Point(86, 287);
+            this.cbotype.Location = new System.Drawing.Point(86, 327);
             this.cbotype.Name = "cbotype";
             this.cbotype.Size = new System.Drawing.Size(206, 23);
             this.cbotype.TabIndex = 16;
@@ -264,7 +269,7 @@ namespace SMS.Views.Students
             this.cbostatus.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbostatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbostatus.FormattingEnabled = true;
-            this.cbostatus.Location = new System.Drawing.Point(86, 254);
+            this.cbostatus.Location = new System.Drawing.Point(86, 294);
             this.cbostatus.Name = "cbostatus";
             this.cbostatus.Size = new System.Drawing.Size(206, 23);
             this.cbostatus.TabIndex = 15;
@@ -307,7 +312,7 @@ namespace SMS.Views.Students
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(12, 254);
+            this.label9.Location = new System.Drawing.Point(12, 294);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(41, 15);
             this.label9.TabIndex = 13;
@@ -327,7 +332,7 @@ namespace SMS.Views.Students
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(12, 287);
+            this.label8.Location = new System.Drawing.Point(12, 327);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(33, 15);
             this.label8.TabIndex = 12;
@@ -395,17 +400,36 @@ namespace SMS.Views.Students
             // toolStrip1
             // 
             this.toolStrip1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.toolStrip1.Location = new System.Drawing.Point(0, 418);
+            this.toolStrip1.Location = new System.Drawing.Point(0, 471);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(446, 25);
             this.toolStrip1.TabIndex = 2;
             this.toolStrip1.Text = "toolStrip1";
             // 
+            // cbosection
+            // 
+            this.cbosection.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbosection.FormattingEnabled = true;
+            this.cbosection.Location = new System.Drawing.Point(90, 231);
+            this.cbosection.Name = "cbosection";
+            this.cbosection.Size = new System.Drawing.Size(202, 23);
+            this.cbosection.TabIndex = 24;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(8, 233);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(48, 15);
+            this.label12.TabIndex = 23;
+            this.label12.Text = "Section";
+            // 
             // frmStudentForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(446, 443);
+            this.ClientSize = new System.Drawing.Size(446, 496);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -457,5 +481,7 @@ namespace SMS.Views.Students
         private System.Windows.Forms.RadioButton rfemale;
         private System.Windows.Forms.RadioButton rmale;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.ComboBox cbosection;
+        private System.Windows.Forms.Label label12;
     }
 }

@@ -36,7 +36,7 @@ namespace SMS.Views.Students
                 cbostudentId.Enabled = false;
                 cbostudentId.DataSource = null;
                 DataHolder.button = "";
-
+                //get type
                 var gettype = await student.ViewCategory("type");
                 if(gettype.ResponseCode == 200)
                 {
@@ -49,7 +49,7 @@ namespace SMS.Views.Students
                         cbotype.SelectedIndex = 0;
                     }
                 }
-
+                //get status
                 var getstatus = await student.ViewCategory("status");
                 if(getstatus.ResponseCode == 200)
                 {
@@ -62,7 +62,7 @@ namespace SMS.Views.Students
                         cbostatus.SelectedIndex = 0;
                     }
                 }
-
+                //Get grade
                 var getgrade = await student.ViewCategory("grade");
                 if (getgrade.ResponseCode == 200)
                 {
@@ -73,6 +73,19 @@ namespace SMS.Views.Students
                         cbograde.ValueMember = "Grade ID";
                         cbograde.DisplayMember = "Grade Level";
                         cbograde.SelectedIndex = 0;
+                    }
+                }
+                //Get section
+                var section = await student.ViewCategory("section");
+                if (section.ResponseCode == 200)
+                {
+                    var getdata = JsonConvert.DeserializeObject<DataTable>(section.Data);
+                    if (getdata.Rows.Count > 0)
+                    {
+                        cbosection.DataSource = getdata;
+                        cbosection.ValueMember = "Section ID";
+                        cbosection.DisplayMember = "Section";
+                        cbosection.SelectedIndex = 0;
                     }
                 }
             }
@@ -152,6 +165,7 @@ namespace SMS.Views.Students
                 var type = cbotype.GetItemText(cbotype.SelectedValue);
                 var stat = cbostatus.GetItemText(cbostatus.SelectedValue);
                 var studentid = cbostudentId.GetItemText(cbostudentId.SelectedValue);
+                var secid = cbosection.GetItemText(cbosection.SelectedValue);
                 if(DataHolder.button == "ADD")
                 {
                     var model = new StudentModel();
@@ -161,8 +175,9 @@ namespace SMS.Views.Students
                     model.gender = rmale.Checked == true ? "Male" : "Female";
                     model.address = uxaddress.Text;
                     model.conNo = uxconNo.Text;
-                    model.gradelevel = Convert.ToInt32(grade);
-                    model.type = Convert.ToInt32(type);
+                    model.gradeId = Convert.ToInt32(grade);
+                    model.typeId = Convert.ToInt32(type);
+                    model.sectionId = Convert.ToInt32(secid);
 
                     var result = await student.InsertStudent(model);
                     if(result.ResponseCode == 200)
@@ -186,9 +201,10 @@ namespace SMS.Views.Students
                     smodel.gender = rmale.Checked == true ? "Male" : "Female";
                     smodel.address = uxaddress.Text;
                     smodel.conNo = uxconNo.Text;
-                    smodel.gradelevel = Convert.ToInt32(grade);
-                    smodel.type = Convert.ToInt32(type);
-                    smodel.status = Convert.ToInt32(stat);
+                    smodel.gradeId = Convert.ToInt32(grade);
+                    smodel.typeId = Convert.ToInt32(type);
+                    smodel.statusId = Convert.ToInt32(stat);
+                    smodel.sectionId = Convert.ToInt32(secid);
 
                     var result = await student.UpdateStudent(smodel);
                     if (result.ResponseCode == 200)
@@ -217,6 +233,65 @@ namespace SMS.Views.Students
         private void label4_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private async void cbostudentId_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                var studentId = cbostudentId.GetItemText(cbostudentId.SelectedValue);
+                if(studentId != "System.DataRow.View")
+                {
+                    var getdata = await student.GetStudentById(studentId);
+                    if(getdata.ResponseCode == 200)
+                    {
+                        var dtstudent = JsonConvert.DeserializeObject<DataTable>(getdata.Data);
+                        if(dtstudent.Rows.Count > 0)
+                        {
+                            foreach (DataRow row in dtstudent.Rows)
+                            {
+                                uxfirstname.Text = row["First_name"].ToString();
+                                uxlastname.Text = row["Last_name"].ToString();
+                                uxmiddle.Text = row["Middle_name"].ToString();
+                                uxaddress.Text = row["Address"].ToString();
+                                uxconNo.Text = row["Con_No"].ToString();
+                                var gender = row["Gender"].ToString();
+                                if (gender.Trim() == "Male")
+                                {
+                                    rmale.Checked = true;
+                                }
+                                else
+                                {
+                                    rfemale.Checked = true;
+                                }
+                                var grade = row["Grade"].ToString();
+                                var section = row["Section"].ToString();
+                                var status = row["Status"].ToString();
+                                var type = row["Type"].ToString();
+                                var grade1 = cbograde.SelectedItem;
+                                cbograde.SelectedItem = grade;
+                                cbostatus.SelectedItem = status;
+                                cbotype.SelectedItem = type;
+                                cbosection.SelectedItem = section;
+                                
+                            }
+
+                            
+                        }
+                        
+                    }
+                    else
+                    {
+                        MessageBox.Show("No record found for " + cbostudentId.Text, "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+                
+            }
+            catch (Exception ex)
+            {
+
+                MessageBox.Show(ex.Message, "Exception error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

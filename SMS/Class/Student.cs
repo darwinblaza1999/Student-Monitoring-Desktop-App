@@ -69,7 +69,7 @@ namespace SMS.Class
                 }
                 param.Add("@retval", dbType: DbType.Int32, direction: ParameterDirection.Output);
 
-                var result = await con.QueryAsync("usp_UpdateStuden", param, commandType: CommandType.StoredProcedure);
+                var result = await con.QueryAsync("usp_UpdateStudent", param, commandType: CommandType.StoredProcedure);
                 var ret = param.Get<int>("retval");
                 if(ret == 100)
                 {
@@ -186,6 +186,38 @@ namespace SMS.Class
 
                 service.Data = null;
                 service.ResponseCode = 500;
+                service.ResponseMessage = ex.Message;
+            }
+            return service;
+        }
+
+        public async Task<ServiceResponse<string>> GetStudentById(string studenId)
+        {
+            var service = new ServiceResponse<string>();
+            try
+            {
+                var param = new DynamicParameters();
+                param.Add("@studentId", studenId);
+
+                var result = await con.QueryAsync("usp_GetStudentByID", param, commandType: CommandType.StoredProcedure);
+                if(result.Count() > 0)
+                {
+                    service.ResponseCode = 200;
+                    service.Data = JsonConvert.SerializeObject(result);
+                    service.ResponseMessage = "Record found";
+                }
+                else
+                {
+                    service.ResponseCode = 300;
+                    service.Data = null;
+                    service.ResponseMessage = "No record found";
+                }
+            }
+            catch (Exception ex)
+            {
+
+                service.ResponseCode = 500;
+                service.Data = null;
                 service.ResponseMessage = ex.Message;
             }
             return service;
