@@ -188,5 +188,39 @@ namespace SMS.Views.Access
             }
            
         }
+
+        private void dgvSystem_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 0)
+            {
+                DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)dgvModule.Rows[e.RowIndex].Cells[0];
+                var val = chk.Value;
+                if (chk.Value == chk.TrueValue)
+                {
+                    dgvModule.Rows[e.RowIndex].Cells[0].Value = chk.FalseValue;
+                }
+                else
+                {
+                    dgvModule.Rows[e.RowIndex].Cells[0].Value = chk.TrueValue;
+                }
+            }
+        }
+
+        private void dgvModule_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if(e.RowIndex == 0)
+            {
+                DataGridViewCheckBoxCell chk = (DataGridViewCheckBoxCell)dgvModule.Rows[e.RowIndex].Cells[0];
+                var val = chk.Value;
+                if (chk.Value == chk.TrueValue)
+                {
+                    dgvModule.Rows[e.RowIndex].Cells[6].Value = chk.FalseValue;
+                }
+                else
+                {
+                    dgvModule.Rows[e.RowIndex].Cells[6].Value = chk.TrueValue;
+                }
+            }
+        }
     }
 }
